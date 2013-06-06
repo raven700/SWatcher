@@ -32,6 +32,7 @@ import threading
 import time
 
 
+sTitle = "SWatcher"
 sStart = "Uruchom"
 sStop = "Zatrzymaj"
 sStartAll = "Uruchom wszystkie"
@@ -94,7 +95,7 @@ class Services(QtGui.QWidget):
 
         
         self.setGeometry(300, 100, 0, 0)
-        self.setWindowTitle("SrvWacher")
+        self.setWindowTitle(sTitle)
         self.show()
         
         
