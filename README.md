@@ -22,3 +22,9 @@ Just run command:
 To create binnary file run:
 
 	python setup.py py2exe
+	
+or run:
+
+	Build.bat
+	
+It is auto make binnary file.
