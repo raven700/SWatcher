@@ -34,9 +34,9 @@ if len(sys.argv) == 1:
 class Target:
     def __init__(self, **kw):
         self.__dict__.update(kw)
-        self.version = "2013.06.06"
+        self.version = "2013.08.12"
         self.company_name = "raven700"
-        self.copyright = "raven700"
+        self.copyright = "raven700 (https://github.com/raven700/SWatcher)"
         self.name = u"SWatcher"
 
 
