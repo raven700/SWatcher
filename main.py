@@ -25,7 +25,7 @@
 # #############################################################################
 
 import sys
-from PyQt4 import QtGui
+from PyQt4 import QtGui, QtCore
 import win32serviceutil
 import threading
 import time
@@ -53,49 +53,52 @@ class Services(QtGui.QWidget):
         self.initUI()
 
     def initUI(self):
-        self.horizontalLayout_2 = QtGui.QHBoxLayout(self)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.gridLayout = QtGui.QGridLayout()
-        self.gridLayout.setObjectName("gridLayout")
+        horizontalLayout = QtGui.QHBoxLayout(self)
+        gridLayout = QtGui.QGridLayout()
+
         # --Wiersz 1--
-        self.l1 = QtGui.QLabel(sService1, self)
-        self.gridLayout.addWidget(self.l1, 0, 0, 1, 1)
+        l1 = QtGui.QLabel(sService1, self)
+        gridLayout.addWidget(l1, 0, 0, 1, 1)
 
         self.bRun1 = QtGui.QPushButton(self)
-        self.gridLayout.addWidget(self.bRun1, 0, 1, 1, 1)
+        gridLayout.addWidget(self.bRun1, 0, 1, 1, 1)
         self.bRun1.clicked.connect(self.bRun1Click)
 
         self.cStatus1 = QtGui.QCheckBox(self)
         self.cStatus1.setEnabled(False)
-        self.gridLayout.addWidget(self.cStatus1, 0, 2, 1, 1)
+        gridLayout.addWidget(self.cStatus1, 0, 2, 1, 1)
+
         # --Wiersz 2--
-        self.l2 = QtGui.QLabel(sService2, self)
-        self.gridLayout.addWidget(self.l2, 1, 0, 1, 1)
+        l2 = QtGui.QLabel(sService2, self)
+        gridLayout.addWidget(l2, 1, 0, 1, 1)
 
         self.bRun2 = QtGui.QPushButton(self)
-        self.gridLayout.addWidget(self.bRun2, 1, 1, 1, 1)
+        gridLayout.addWidget(self.bRun2, 1, 1, 1, 1)
         self.bRun2.clicked.connect(self.bRun2Click)
 
         self.cStatus2 = QtGui.QCheckBox(self)
         self.cStatus2.setEnabled(False)
-        self.gridLayout.addWidget(self.cStatus2, 1, 2, 1, 1)
+        gridLayout.addWidget(self.cStatus2, 1, 2, 1, 1)
+
         # --Wiersz 3--
         spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.gridLayout.addItem(spacerItem, 3, 1, 1, 1)
+        gridLayout.addItem(spacerItem, 3, 1, 1, 1)
+
         # --Wiersz 4--
-        self.bOnAll = QtGui.QPushButton(sStartAll, self)
-        self.gridLayout.addWidget(self.bOnAll, 4, 0, 1, 1)
-        self.bOnAll.clicked.connect(self.bOnAllClick)
+        bOnAll = QtGui.QPushButton(sStartAll, self)
+        gridLayout.addWidget(bOnAll, 4, 0, 1, 1)
+        bOnAll.clicked.connect(self.bOnAllClick)
 
-        self.bOffAll = QtGui.QPushButton(sStopAll, self)
-        self.gridLayout.addWidget(self.bOffAll, 4, 1, 1, 1)
-        self.bOffAll.clicked.connect(self.bOffAllClick)    
+        bOffAll = QtGui.QPushButton(sStopAll, self)
+        gridLayout.addWidget(bOffAll, 4, 1, 1, 1)
+        bOffAll.clicked.connect(self.bOffAllClick)
 
-        self.horizontalLayout_2.addLayout(self.gridLayout)
+        horizontalLayout.addLayout(gridLayout)
 
 
-        self.setGeometry(300, 100, 0, 0)
+        self.setFixedSize(0, 110)
         self.setWindowTitle(sTitle)
+        self.setWindowFlags(QtCore.Qt.Window | QtCore.Qt.WindowMaximizeButtonHint)
         self.show()
 
 
